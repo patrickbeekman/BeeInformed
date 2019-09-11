@@ -16,6 +16,7 @@ def average_loss_by_year():
     print("y")
 
 
+
 def main():
     average_loss_by_year()
 
