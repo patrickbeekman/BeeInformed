@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
+
 def average_loss_by_year():
     data = pd.read_csv("data/total_winter_colony_losses.csv")
     yearly_average = data.groupby(data['year']).mean()

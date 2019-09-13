@@ -2,3 +2,5 @@
 __pycache__/
 data/
 geckodriver.log
+beeinformed.pem
+bee_informed_key.pem
