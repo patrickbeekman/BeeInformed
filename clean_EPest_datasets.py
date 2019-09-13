@@ -16,6 +16,7 @@ dangerous_pesticides = [x.upper() for x in dangerous_pesticides] # convert to ca
 
 
 def convert_fips_filter_dangerous_pesticides():
+    # converting these fips values to State and county names is how arcgis online used the data
     # dataset from: https://www2.census.gov/programs-surveys/popest/geographies/2017/all-geocodes-v2017.xlsx
     # open the geocodes file to convert FIPS codes
     fips_codes = pd.read_csv("data/all-geocodes-v2017.csv", header=4)
@@ -28,7 +29,7 @@ def convert_fips_filter_dangerous_pesticides():
 
     # clean each yearly file
     files = os.listdir("data/")
-    epest_re = re.compile("EPest\.county\.estimates\.+(20\d\d)\.txt")
+    epest_re = re.compile("EPest\.county\.estimates.+(20\d\d)\.txt")
     for file in files:
         if epest_re.match(file):
             curr_data = pd.read_csv("data/" + file, header=0, delimiter='\t')
@@ -44,9 +45,23 @@ def convert_fips_filter_dangerous_pesticides():
             small_data = small_data.rename(columns={'Area Name (including legal/statistical area description)':"county_name"})
             small_data.to_csv("data/small_" + file.replace(".txt", ".csv"))
 
+# combine the datasets together into one file
+def combine_years():
+    data = None
+    small_re = re.compile("small_EPest\.county\.estimates.+(20\d\d)\.csv")
+    for file in os.listdir("data/"):
+        if small_re.match(file):
+            if data is None:
+                data = pd.read_csv("data/"+file)
+            else:
+                data = data.append(pd.read_csv("data/"+file))
+    data.to_csv("data/combined_small_EPest_county.csv")
+    print("h")
+
 
 def main():
-
+    convert_fips_filter_dangerous_pesticides()
+    combine_years()
     print("yo")
 
 
