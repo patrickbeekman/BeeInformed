@@ -1,4 +1,5 @@
 pandas
 bokeh
 geopandas
-json
+Flask
+gunicorn
