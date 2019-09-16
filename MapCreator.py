@@ -68,7 +68,8 @@ class MapCreator:
         self.slider.on_change('value', self.updated_plot_year)
 
         layout = column(self.loss_plot, widgetbox(self.slider))
-        curdoc().add_root(layout)
+        return layout
+        # curdoc().add_root(layout)
 
     #update callback
     def updated_plot_year(self, attr, old, new):
