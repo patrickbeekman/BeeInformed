@@ -1,6 +1,7 @@
 .idea/
 __pycache__/
 data/
+plots/
 geckodriver.log
 beeinformed.pem
 bee_informed_key.pem
