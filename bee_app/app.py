@@ -9,6 +9,10 @@ app = Flask(__name__)
 def app_page():
     return render_template("page.html")
 
+@app.route("/hi", methods=['GET'])
+def hello():
+    return render_template("hi.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

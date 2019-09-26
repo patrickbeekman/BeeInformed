@@ -5,3 +5,4 @@ geckodriver.log
 beeinformed.pem
 bee_informed_key.pem
 access.txt
+bee_app/nohup.out
