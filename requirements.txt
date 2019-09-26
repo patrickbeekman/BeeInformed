@@ -1,0 +1,5 @@
+pandas
+bokeh
+geopandas
+Flask
+gunicorn
